@@ -5,6 +5,7 @@ from tkinter import *
 import os
 from sitemapimport import *
 import sitemapimport
+from PIL import ImageTk, image
 
 
 ## This initializes the object that will be assigned the yes/no variable for the first window
@@ -104,11 +105,11 @@ def secondWin():
     submit2_button = tk.Button(master2, text='Submit', command=submit2)
     submit2_button.pack(padx=10, pady=10)
     
- 
+ ## Saves the value chosen by the submit button
 def submit2():
     recipeclass = recipe_var.get()
     
-        
+        ## Initializes sublists to creat another combomenu
     if recipeclass == " Fruits":
             fruitsList()
     if recipeclass == " Vegetables":
@@ -135,27 +136,28 @@ def submit2():
             flavor()
     if recipeclass == ' Misc. Foods':
             miscList()
-
+## If the fruit sublist is chosen, it will list all websites in the "fruit" list in label format.
 def fruitsList():
+    master2 = Tk()
+        fruitImg = tk.PhotoImage(file="fruits.jpg")
+        fruitImg.pack()
         for x in fruit:
             label = label(root, text=x)
             label.pack()
             label.append(label)
 
 def vegetablesList():
+    master2 = Tk()
+        vegImg = tk.PhotoImage(file="veggies.jpg")
+        vegImg.pack()
         for x in vegetable:
             label = label(root, text=x)
             label.pack()
             label.append(label)
 
-
+## Starts the main program
 if __name__ == '__main__':
     root = tk.Tk()
     app = recipeLookup(root)
     root.mainloop()
 
-    ## else, continue to main program
-
-    ## if no path exists, run sitemapimport mainloop
-
-    ##continue to this programs mainloop
